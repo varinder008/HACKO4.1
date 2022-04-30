@@ -113,13 +113,14 @@
         <label>
             <textarea type="text" id="encryptedInput-1" paceholder="Encrypted text will appear here..."></textarea>
         </label>
-        <button id="copyToCLipBoard">Copy Text</button>
+        <button id="copy">Copy Text</button>
     </div>
-    <script>    let encryptBtn=document.getElementById('encrypt-btn');
+    
+    <script>
         let eInput=document.getElementById('encyptedInput-1')
         let pInput=document.getElementById('plainInput')
         let inputs=[eInput,pInput]
-        let copyBtn=document.getElementById('copyToClipBoard')
+        
 
         inputs.forEach( input => {
             input.oninput = () => {
@@ -127,7 +128,9 @@
 
             }
         })
-
+        const encryptbtnn = document.getElementById("encrypt-btn");
+encryptbtnn.addEventListener("click", encrypt);
+        
         function encrypt(){
             let pInput=document.getEelementById('plainInput-1').value;
             let solved=''
@@ -140,15 +143,23 @@
             }
             eInput.value=solved
         }
-        encryptBtn.addEventListener('click', encrypt)
+        
+        const copyBtnn = document.getElementById("copy");
+        copyBtnn.addEventListener('click',copyText)
+        
         function copyText(){
             eInput.select()
             eInput.setSelectionRange(0,99999)
             document.execCommand('copy')
             alert('Copied to clipboard: ${eInput.value}')
         }
-        copyBtn.addEventListener('click',copyText)
         
+
+
+
+
+
+
 
   
     </script>
