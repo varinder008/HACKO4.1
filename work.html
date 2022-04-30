@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>DocumentS</title>
+    <title>CaesarCypher</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Mystery Quest');
 
@@ -140,7 +140,7 @@
             }
             eInput.value=solved
         }
-
+        encryptBtn.addEventListener('click', encrypt)
         function copyText(){
             eInput.select()
             eInput.setSelectionRange(0,99999)
@@ -148,7 +148,7 @@
             alert('Copied to clipboard: ${eInput.value}')
         }
         copyBtn.addEventListener('click',copyText)
-        encryptBtn.addEventListener('click', encrypt)
+        
 
   
     </script>
