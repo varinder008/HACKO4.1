@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>DocumentS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Mystery Quest');
+
+        body{
+            
+            position:relative;
+            bottom:100px;
+            right:200px;
+
+        }
+        label{
+            font-family:sans-serif;
+            color:black;
+            transform:scale(1.5);
+            position:relative;
+
+        }
+        #container-2{
+            position:relative;
+            left:700px;
+            top:140px;
+            background:lavender;
+            border-radius:10px;
+            padding:10px 60px;
+            width:200px;
+            height:400px;
+            flex-direction:column;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2)
+
+        }
+        #container-2 button{
+            position:relative;
+            outline:None;
+            border-radius:5px;
+            text-align:center;
+            transform:scale(1.5);
+            margin-bottom:70px;
+            position:relative;
+            top:40px;
+            cursor:pointer;
+        }
+        #encrypt-btn{
+            transform:translate(50px,128px) scale(2.4);
+        }
+
+        #copyToClipBoard{
+            border-radius:2px;
+            border:none;
+            cursor:pointer;
+            background:black;
+            color:white;
+            font-family:sans-serif;
+            font-size:10px;
+            padding:4px 12px;
+        }
+        #shiftInput{
+            transform:scale(2);
+            outline:None;
+            cursor:pointer;
+            border:1px solid grey;
+        }
+        #container-1{
+            background:lavender;
+            
+            border-radius:10px;
+            padding:30px 80px;
+            width:400px;
+            height:50px;
+            box-shadow:0 0 30px rgba(0,0,0,0.2);
+            transform:translate(590px,100px);
+            font-family:"Fruktur",cursive;
+            cursor:pointer;
+        }
+        #container-1,#container-2{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #caesar{
+            width:111px;
+            border-radius:0px 10px 10px 0px;
+            position:relative;
+            left:62;
+
+        }
+
+    </style>
+</head>
+<body background="bg.jpeg">
+    <div id='container-1'>
+        <h1>Caesar Cipher Encrypter</h1>
+        <img src="hacko1.jpeg" id="caesar" alt="Caesar">
+       
+    </div>
+
+    <div id='container-2'>
+        <label><textarea type="text" id="plainInput-1" placeholder="Type text"></textarea></label>
+       <br>
+        <input type="number" id="shiftInput" min='0' max="25">
+        
+        <button id="encrypt-btn">Encrypt</button>
+        
+        <label>
+            <textarea type="text" id="encryptedInput-1" paceholder="Encrypted text will appear here..."></textarea>
+        </label>
+        <button id="copyToCLipBoard">Copy Text</button>
+    </div>
+    <script>    let encryptBtn=document.getElementById('encrypt-btn');
+        let eInput=document.getElementById('encyptedInput-1')
+        let pInput=document.getElementById('plainInput')
+        let inputs=[eInput,pInput]
+        let copyBtn=document.getElementById('copyToClipBoard')
+
+        inputs.forEach( input => {
+            input.oninput = () => {
+                input.value = input.value.toUpperCase()
+
+            }
+        })
+
+        function encrypt(){
+            let pInput=document.getEelementById('plainInput-1').value;
+            let solved=''
+            let shiftInput = parseInt(document.getElementById('shiftInput').value)
+
+            for(var i=0; i<pInput.length;i++){
+                let ascii_sum=pInput[i].charCodeAt()
+                let sum= asccii_num+shiftInput
+                sum>=65 && sum<=90 ? solved += String.fromCharCode(sum) :sum >90 ? solved+=String.fromCharCode(65+(sum &91)) : solved +=pInput[i]
+            }
+            eInput.value=solved
+        }
+
+        function copyText(){
+            eInput.select()
+            eInput.setSelectionRange(0,99999)
+            document.execCommand('copy')
+            alert('Copied to clipboard: ${eInput.value}')
+        }
+        copyBtn.addEventListener('click',copyText)
+        encryptBtn.addEventListener('click', encrypt)
+
+  
+    </script>
+   
+   
+
+</body>
+</html>
