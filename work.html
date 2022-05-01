@@ -108,14 +108,18 @@
        <br>
         <input type="number" id="shiftInput" min='0' max="25">
         
-        <button id="encrypt-btn">Encrypt</button>
+        <button id="Encrypt">Encrypt</button>
+
+<p id="demo"></p>
+
         
         <label>
             <textarea type="text" id="encryptedInput-1" paceholder="Encrypted text will appear here..."></textarea>
         </label>
         <button id="copy">Copy Text</button>
+        <p id="demo1"></p>
     </div>
-    
+    <span id='enc'></span>
     <script>
         let eInput=document.getElementById('encyptedInput-1')
         let pInput=document.getElementById('plainInput')
@@ -128,9 +132,13 @@
 
             }
         })
-        const encryptbtnn = document.getElementById("encrypt-btn");
-encryptbtnn.addEventListener("click", encrypt);
         
+        document.getElementById("Encrypt").innerHTML.addEventListener("click", chlo);
+
+function chlo() {
+  document.getElementById("demo").innerHTML = encrypt();
+}
+
         function encrypt(){
             let pInput=document.getEelementById('plainInput-1').value;
             let solved=''
@@ -142,6 +150,7 @@ encryptbtnn.addEventListener("click", encrypt);
                 sum>=65 && sum<=90 ? solved += String.fromCharCode(sum) :sum >90 ? solved+=String.fromCharCode(65+(sum &91)) : solved +=pInput[i]
             }
             eInput.value=solved
+            document.getElementById('enc').innerHTML = solved;
         }
         
         const copyBtnn = document.getElementById("copy");
